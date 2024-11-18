@@ -1,1 +1,4 @@
-<p>game works!</p>
+<p>Hello</p>
+<app-card *ngIf="leftCard" class="left-card" [cardInfo]="leftCard"></app-card>
+<app-card *ngIf="rightCard" class="right-card" [cardInfo]="rightCard"></app-card>
+<button mat-flat-button (click)="onPlay()">PLAY</button>
