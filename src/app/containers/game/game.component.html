@@ -1,4 +1,6 @@
-<p>Hello</p>
+<h4>People and Starships</h4>
+<div class="game-area">
 <app-card *ngIf="leftCard" class="left-card" [cardInfo]="leftCard"></app-card>
 <app-card *ngIf="rightCard" class="right-card" [cardInfo]="rightCard"></app-card>
-<button mat-flat-button (click)="onPlay()">PLAY</button>
+</div>
+<button mat-flat-button (click)="onPlay()" class="play_button">PLAY NEW GAME</button>

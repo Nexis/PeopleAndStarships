@@ -1,1 +1,14 @@
-
+mat-card{
+  height: 700px;
+  width: 500px;
+  mat-card-header{
+    font-weight: 700;
+    padding: 30px;
+  }
+  mat-card-content{
+    padding: 0 0 0 30px;
+  }
+  p{
+    display: inline-flex;
+  }
+}
