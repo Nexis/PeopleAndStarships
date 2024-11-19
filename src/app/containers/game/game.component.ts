@@ -22,12 +22,12 @@ import {FormsModule} from '@angular/forms';
 })
 export class GameComponent implements OnDestroy {
 
-  leftPlayer: Player = {points: 0, selectedType: CardType.RANDOM};
-  rightPlayer: Player = {points: 0, selectedType: CardType.RANDOM};
+  leftPlayer: Player = {id: 'LeftPlayer', points: 0, selectedType: CardType.RANDOM};
+  rightPlayer: Player = {id: 'RightPlayer', points: 0, selectedType: CardType.RANDOM};
 
   cardsLoading = false;
 
-  types =[CardType.STARSHIP,CardType.PERSON, CardType.RANDOM];
+  types = [CardType.STARSHIP, CardType.PERSON, CardType.RANDOM];
 
   destroy$: Subject<void> = new Subject();
 
@@ -51,7 +51,6 @@ export class GameComponent implements OnDestroy {
       this.rightPlayer.currentCard = rightCardVal;
 
       this.calculatePoints(this.leftPlayer, this.rightPlayer);
-
     })
   }
 

@@ -2,31 +2,22 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 50px;
-  height: 700px;
+  padding: var(--app-standard-padding);
+  height: var(--app-standard-card-height);
 }
 
 h4 {
-  display: flex;
-  justify-self: center;
-  padding-top: 30px;
+  padding-top: var(--app-standard-padding);
 }
-h3 {
-  display: flex;
-  justify-self: center;
-}
+
 .player{
-  width: 500px;
+  width: var(--app-standard-card-width);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center ;
 }
-.mat-form-field{
-  display: flex;
-  justify-self: center;
-}
-.play_button {
+.mat-form-field, .play_button, h3, h4{
   display: flex;
   justify-self: center;
 }

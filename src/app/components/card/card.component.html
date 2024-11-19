@@ -2,7 +2,7 @@
   <mat-card-header>{{ cardInfo.type }}</mat-card-header>
   <div *ngFor="let property of getPropertiesAsPairs()">
     <mat-card-content>
-      <p style="font-weight:500">{{ property[0] }}:</p>
+      <p class="medium-bolded-paragraph">{{ property[0] }}:</p>
       <p> {{ property[1] }}</p>
     </mat-card-content>
   </div>

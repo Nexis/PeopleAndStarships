@@ -33,7 +33,7 @@ export class CardsService implements OnDestroy {
     } else if (type === CardType.STARSHIP && this.starshipOptions) {
       return this.starWarsApiService.getStarships(this.getRandomUidFromTable(this.starshipOptions)).pipe(take(1), takeUntil(this.destroy$));
     } else {
-      throw new Error("No cards of asked result")
+      throw new Error("No cards of asked type");
     }
   }
 

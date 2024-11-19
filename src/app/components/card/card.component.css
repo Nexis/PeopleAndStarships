@@ -1,19 +1,25 @@
-mat-card{
-  height: 700px;
-  width: 500px;
+mat-card {
+  height: var(--app-standard-card-height);
+  width: var(--app-standard-card-width);
   overflow-y: auto;
-  mat-card-header{
-    font-weight: 700;
-    padding: 30px;
+
+  mat-card-header {
+    font-weight: var(--app-font-weight-bold);
+    padding: var(--app-standard-padding);
   }
-  mat-card-content{
-    padding: 0 0 0 30px;
+
+  mat-card-content {
+    padding: 0 0 0 var(--app-standard-padding);
     text-overflow: ellipsis;
-    max-width: 500px;
-    overflow:hidden;
-    white-space:nowrap;
+    max-width: var(--app-standard-card-width);
+    overflow: hidden;
+    white-space: nowrap;
   }
-  p{
+
+  p {
     display: inline-flex;
+    .medium-bolded-paragraph{
+      font-weight: var(--app-font-weight-medium);
+    }
   }
 }
