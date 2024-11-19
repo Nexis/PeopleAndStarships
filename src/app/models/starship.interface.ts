@@ -4,7 +4,7 @@ export interface Starship {
   consumables: string;
   cost_in_credits: string;
   crew: number;
-  hyperdrive_rating: number;
+  hyperdrive_rating: string;
   length: string;
   manufacturer: string;
   max_atmosphering_speed: string;

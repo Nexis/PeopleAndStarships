@@ -1,12 +1,17 @@
 mat-card{
   height: 700px;
   width: 500px;
+  overflow-y: auto;
   mat-card-header{
     font-weight: 700;
     padding: 30px;
   }
   mat-card-content{
     padding: 0 0 0 30px;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    overflow:hidden;
+    white-space:nowrap;
   }
   p{
     display: inline-flex;

@@ -1,16 +1,36 @@
-.game-area{
+.game-area {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 50px;
+  height: 700px;
 }
 
-h4{
+h4 {
   display: flex;
   justify-self: center;
-  padding-top: 30px;;
+  padding-top: 30px;
 }
-.play_button{
+h3 {
   display: flex;
   justify-self: center;
+}
+.player{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center ;
+}
+.mat-form-field{
+  display: flex;
+  justify-self: center;
+}
+.play_button {
+  display: flex;
+  justify-self: center;
+}
+
+mat-spinner {
+  margin: auto;
 }

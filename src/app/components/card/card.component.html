@@ -1,8 +1,8 @@
 <mat-card appearance="outlined">
   <mat-card-header>{{ cardInfo.type }}</mat-card-header>
-  <div *ngFor="let property of Object.entries(cardInfo.properties)">
+  <div *ngFor="let property of getPropertiesAsPairs()">
     <mat-card-content>
-      <p style="font-weight:500">{{ property[0] }} :</p>
+      <p style="font-weight:500">{{ property[0] }}:</p>
       <p> {{ property[1] }}</p>
     </mat-card-content>
   </div>

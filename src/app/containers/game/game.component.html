@@ -1,6 +1,24 @@
 <h4>People and Starships</h4>
 <div class="game-area">
-<app-card *ngIf="leftCard" class="left-card" [cardInfo]="leftCard"></app-card>
-<app-card *ngIf="rightCard" class="right-card" [cardInfo]="rightCard"></app-card>
+  <div class="player">
+    <h3>{{leftPlayer.points}}</h3>
+    <mat-form-field>
+      <mat-select [(ngModel)]="leftPlayer.selectedType">
+        <mat-option *ngFor ="let type of types" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <app-card *ngIf="leftPlayer.currentCard" [cardInfo]="leftPlayer.currentCard"></app-card>
+  </div>
+  <div class="player">
+    <h3>{{rightPlayer.points}}</h3>
+    <mat-form-field>
+      <mat-select [(ngModel)]="rightPlayer.selectedType">
+        <mat-option  *ngFor ="let type of types" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <app-card *ngIf="rightPlayer.currentCard" [cardInfo]="rightPlayer.currentCard"></app-card>
+  </div>
 </div>
 <button mat-flat-button (click)="onPlay()" class="play_button">PLAY NEW GAME</button>
+<mat-spinner *ngIf="cardsLoading"></mat-spinner>

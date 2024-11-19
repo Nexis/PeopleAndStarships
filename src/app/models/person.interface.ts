@@ -1,10 +1,10 @@
 export interface Person {
   height: string;
-  mass: string;
+  mass: number;
   hair_color: string;
   skin_color: string;
-  eye_color: number;
-  birth_year: number;
+  eye_color: string;
+  birth_year: string;
   gender: string;
   name: string;
   homeworld: string;
