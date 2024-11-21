@@ -1,5 +1,5 @@
 <mat-card appearance="outlined">
-  <mat-card-header>{{ cardInfo.type }}</mat-card-header>
+  <mat-card-header class="selenium-card-header">{{ cardInfo.type }}</mat-card-header>
   <div *ngFor="let property of getPropertiesAsPairs()">
     <mat-card-content>
       <p class="medium-bolded-paragraph">{{ property[0] }}:</p>

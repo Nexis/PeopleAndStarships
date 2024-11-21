@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {StarWarsApiService} from './star-wars-api.service';
-import {Observable, Subject, take, takeUntil} from 'rxjs';
+import {catchError, Observable, Subject, take, takeUntil, zip} from 'rxjs';
 import {Player} from '../models/player';
 import {CardInfo, CardType} from '../models/card.interface';
 
@@ -12,17 +12,21 @@ export class CardsService implements OnDestroy {
   private starshipOptions?: number[];
   private peopleOptions?: number[];
 
+  private serviceOptionsReady$ = new Subject<boolean>;
   private destroy$ = new Subject<void>;
 
   constructor(private starWarsApiService: StarWarsApiService) {
-    this.initStarshipOptions();
-    this.initPeopleOptions();
+    this.initServiceOptions();
   }
 
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  serviceOptionsReady(): Observable<boolean> {
+    return this.serviceOptionsReady$.asObservable();
   }
 
   getCardFor(player: Player): Observable<CardInfo> {
@@ -37,15 +41,13 @@ export class CardsService implements OnDestroy {
     }
   }
 
-  private initStarshipOptions() {
-    this.starWarsApiService.getStarshipOptions().pipe(take(1), takeUntil(this.destroy$)).subscribe(result => {
-      this.starshipOptions = result.map(option => option.uid);
-    })
-  }
-
-  private initPeopleOptions() {
-    this.starWarsApiService.getPeopleOptions().pipe(take(1), takeUntil(this.destroy$)).subscribe(result => {
-      this.peopleOptions = result.map(option => option.uid);
+  private initServiceOptions() {
+    let getStarshipOptions$ = this.starWarsApiService.getStarshipOptions();
+    let getPeopleOptions$ = this.starWarsApiService.getPeopleOptions();
+    zip(getStarshipOptions$, getPeopleOptions$).pipe(take(1), takeUntil(this.destroy$)).subscribe(([starshipOptions, peopleOptions]) => {
+      this.starshipOptions = starshipOptions.map(option => option.uid);
+      this.peopleOptions = peopleOptions.map(option => option.uid);
+      this.serviceOptionsReady$.next(true);
     })
   }
 

@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: var(--app-standard-padding);
-  height: var(--app-standard-card-height);
+  height: var(--app-standard-game-area-height);
 }
 
 h4 {

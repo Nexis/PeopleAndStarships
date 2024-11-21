@@ -6,6 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 :root{
   --app-standard-card-width: 500px;
   --app-standard-card-height: 700px;
+  --app-standard-game-area-height: 900px;
   --app-standard-padding: 30px;
   --app-font-weight-bold: 700;
   --app-font-weight-medium: 500;

@@ -1,8 +1,8 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CardInfo, CardType} from '../../models/card.interface';
-import {Subject, take, takeUntil, zip} from 'rxjs';
+import {of, Subject, take, takeUntil, zip} from 'rxjs';
 import {CardComponent} from '../../components/card/card.component';
-import {NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {Player} from '../../models/player';
 import {CardsService} from '../../services/cards.service';
@@ -16,16 +16,17 @@ import {FormsModule} from '@angular/forms';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CardComponent, NgIf, MatButton, MatProgressSpinner, MatLabel, MatFormField, MatSelect, MatOption, NgForOf, FormsModule],
+  imports: [CardComponent, NgIf, MatButton, MatProgressSpinner, MatLabel, MatFormField, MatSelect, MatOption, NgForOf, FormsModule, AsyncPipe],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
 })
-export class GameComponent implements OnDestroy {
+export class GameComponent implements OnInit, OnDestroy {
 
   leftPlayer: Player = {id: 'LeftPlayer', points: 0, selectedType: CardType.RANDOM};
   rightPlayer: Player = {id: 'RightPlayer', points: 0, selectedType: CardType.RANDOM};
 
   cardsLoading = false;
+  cardOptionsReady$ = of(false);
 
   types = [CardType.STARSHIP, CardType.PERSON, CardType.RANDOM];
 
@@ -34,6 +35,9 @@ export class GameComponent implements OnDestroy {
   constructor(private cardsService: CardsService) {
   }
 
+  ngOnInit() {
+    this.cardOptionsReady$ =this.cardsService.serviceOptionsReady().pipe(take(1), takeUntil(this.destroy$));
+  }
 
   onPlay(): void {
     this.cardsLoading = true;

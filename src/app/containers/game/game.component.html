@@ -1,24 +1,26 @@
-<h4>People and Starships</h4>
+<h4 class="selenium-page-header">People and Starships</h4>
 <div class="game-area">
   <div class="player">
-    <h3>{{leftPlayer.points}}</h3>
+    <h3>{{ leftPlayer.points }}</h3>
     <mat-form-field>
-      <mat-select [(ngModel)]="leftPlayer.selectedType">
-        <mat-option *ngFor ="let type of types" [value]="type">{{type}}</mat-option>
+      <mat-select [(ngModel)]="leftPlayer.selectedType" class="selenium-left-card-type-select">
+        <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
       </mat-select>
     </mat-form-field>
-
-    <app-card *ngIf="leftPlayer.currentCard" [cardInfo]="leftPlayer.currentCard"></app-card>
+    <app-card *ngIf="leftPlayer.currentCard" [cardInfo]="leftPlayer.currentCard" class="selenium-left-card"></app-card>
   </div>
   <div class="player">
-    <h3>{{rightPlayer.points}}</h3>
+    <h3>{{ rightPlayer.points }}</h3>
     <mat-form-field>
-      <mat-select [(ngModel)]="rightPlayer.selectedType">
-        <mat-option  *ngFor ="let type of types" [value]="type">{{type}}</mat-option>
+      <mat-select [(ngModel)]="rightPlayer.selectedType" class="selenium-right-card-type-select">
+        <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <app-card *ngIf="rightPlayer.currentCard" [cardInfo]="rightPlayer.currentCard"></app-card>
+    <app-card *ngIf="rightPlayer.currentCard" [cardInfo]="rightPlayer.currentCard"
+              class="selenium-right-card"></app-card>
   </div>
 </div>
-<button mat-flat-button (click)="onPlay()" class="play_button">PLAY NEW GAME</button>
+<button mat-flat-button (click)="onPlay()" class="play_button selenium-play-button"
+        [disabled]="!(cardOptionsReady$|async)">PLAY NEW GAME
+</button>
 <mat-spinner *ngIf="cardsLoading"></mat-spinner>
